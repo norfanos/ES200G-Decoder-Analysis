@@ -82,7 +82,7 @@ jupyter notebook --notebook-dir=D:/
 35. _[0x2C]_
 36. CRC8/Maxim
 
-> Data columns 28 and 29 could be a float (2 bytes) but why? Likely to states for two discrete functions even though they seem to be in sync.
+> Data columns 28 and 29 could be a float (2 bytes) but why? Likely two states for two discrete functions even though they seem to be in sync.
 
 > Data columns 34 and 35 could be a float _[11.35]_ or two integers of _[82]_ _[44]_ or ASCII _[,]_ _[R]_
 
