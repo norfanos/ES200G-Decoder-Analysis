@@ -13,12 +13,13 @@ jupyter notebook --notebook-dir=D:/
 1. _[0x3A]_
 2. _[0x16]_
 3. _[0x20]_
-4. Some state [0x02], [0x1D], [0x2F], [0x0F]
+4. Some state [0x02], [0x0E], [0x1D], [0x2F], [0x0F]
   > __This is acting like a state for possibly an indicator light__
 
   * These code are flashed as follows
     * [0x02] On and Discharging
       * Seems to be the default value given when discharging
+    * [0x0E] About to start charging (????? LOAD)
     * [0x1D] About to start charging (NO LOAD)
       * Seems to be given when charging begins up after BMS low-power shutdown
     * [0x2F] On and Charging (NO LOAD)
@@ -28,7 +29,7 @@ jupyter notebook --notebook-dir=D:/
     * Alternating [0x0F][0x2F] this seems to happen when charge is at 100% and current draw starts bouncing between 1 to 0 amps respectively. This could be used to alert the user the charge has slowed down to a trickle before it turns off.
 5. _[0x00]_
 6. Energy Gauge (0-100)
-7. Unknown A (0-100)
+7. Unknown A (0-100) ??
 8. Celsius Temp A
 9. Celsius Temp B
 10. Celsius Temp C
@@ -54,13 +55,12 @@ jupyter notebook --notebook-dir=D:/
       * [0x01] Seems to be given when charging (NO LOAD)
       * [0x03] Seems to be given when charging begins, similar timing to #4 (NO LOAD)
 19. _[0x00]_
-20. [0x00], [0x60]
+20. [0x00], [0x20], [0x60]
   * [0x00] Seems to be given when discharging (LOAD)
-  * [0x60] Seems to be given when charging (NO LOAD)
-  * Data shared from another hacker shows the following values.
-      * [0x20] — Need to figure out if there was charging while under load (discharging) as that could be one explanation for this difference.
+  * [0x20] Seems to be given when discharging (LOAD)
+  * [0x60] Seems to be given when charging (NO LOAD) -- Maybe not? Seeing it on discharge, no charging.
 21. [0x00], [0x40]
-  * [0x40] Seems to be given when discharging (LOAD)
+  * [0x40] Seems to be given when discharging (LOAD) -- Maybe not?
   * [0x00] Seems to be given when charging (NO LOAD)
 22. Total Voltage (LSB)
 23. Total Voltage (MSB)
@@ -70,7 +70,7 @@ jupyter notebook --notebook-dir=D:/
 27. Total Current (MSB)
 28. [0x00], [0xFF]
   * Charge State A — Possibly used to allow motor or lighting based on whether the battering is charging or not (binary state)
-      * [0xFF] When on and _**not**_ charging
+      * [0xFF] When battery is ON there  _**not**_ charging
 29. [0x00], [0xFF]
   * Charge State B — Possibly used to allow motor or lighting based on whether the battering is charging or not (binary state)
       * [0xFF] When on and _**not**_ charging
