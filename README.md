@@ -13,7 +13,7 @@ jupyter notebook --notebook-dir=D:/
 1. _[0x3A]_
 2. _[0x16]_
 3. _[0x20]_
-4. Some state [0x02], [0x0E], [0x1D], [0x2F], [0x0F]
+4. Some state [0x02], [0x03], [0x0E], [0x1D], [0x2F], [0x0F]
   > __This is acting like a state for possibly an indicator light__
 
   * These code are flashed as follows
@@ -39,7 +39,7 @@ jupyter notebook --notebook-dir=D:/
     * [0x01], [0x21], [0x22], [0x29], [0x2E], [0x33], [0x36], [0x39], [0x3A], [0x3B]
     > Order is sequential only because I placed them that way. The analyzed data records are not ordered and seem to flutter about. Maybe that's a sign of non-liner values like temperature, draw and the like, but more a state or a code parameter.
 
-13._[0x00]_
+13. _[0x00]_
 14. Some state [0x00], [0x19], [0x7C]
   > __This is acting like a state that could be used to in relation to the charger being engaged__
 
@@ -88,3 +88,83 @@ jupyter notebook --notebook-dir=D:/
 
 ### Commit Notes
 > Before committing, clear cell and widget states to reduce the size of the notebook.
+
+
+
+### Contributed Information from Jonathan Sperb
+```
+Comand sent:
+(byte) -
+(0) - 0x32 (read ?)
+(1) - 0x13 (?)
+(2) - 0x01 (num of bytes ?)
+(3) - 0x16 (address ?)
+(4) - Maxim Checksum8
+
+Comand received:
+(byte) -
+(0) - 0x32 Comand (read (?))
+(1) - 0x16 Address (?)
+(2) - 0x20 Num of bytes (without checksum (?))
+(3) - Status bits
+                            0 0 0 0  0 0 1 0  [0x02]
+                            0 0 0 0  0 0 1 1  [0x03]
+                            0 0 0 0  0 0 0 0  [0x0E]
+                            0 0 0 0  0 0 0 0  [0x1D]
+                            0 0 1 0  1 1 1 1  [0x2F]
+                            0 0 0 0  1 1 1 1  [0x0F]
+                        ? ──┘ │ │ │  │ │ │ │
+                        ? ────┘ │ │  │ │ │ │
+            Charging bulk ──────┘ │  │ │ │ │
+       Cell under-voltage ────────┘  │ │ │ │
+         Charger Okay (?) ───────────┘ │ │ │
+          Charge Detected ─────────────┘ │ │
+ Discharge MOSFET enabled ───────────────┘ │
+    Charge MOSFET enabled ─────────────────┘
+
+(4) -
+(5) - State of charge
+(6) -
+(7) - Max Cell temp
+(8) - Avg Cell temp
+(9) - discharge mosfet temperature
+(10) - microcontroller Temperature
+(12-11) - Charge Cycle count
+(13) - Charger OnOff (?)
+(14) -
+(15) -
+(16) - Overvoltage (?)
+(17) - Low Power/Standby (?)
+(18) - Overtemp (?)
+(19) -
+(20) -
+(22-21) - Pack Voltage
+(23) -
+(24) -
+(26-25) - Pack Current
+(27) - Discharging (?)
+(28) - Discharging (?)
+(30-29) - Highest Cell Voltage
+(32-31) - Lowest Cell Voltage
+(33) -
+(34) -
+(35) - Maxim Checksum8
+About the status byte (3):
+b7 -
+b6 -
+b5 - charging (bulk)
+b4 - cell undervoltage
+b3 - charger ok (?)
+b2 - charger detected (?)
+b1 - discharge mosfet enabled
+b0 - charger mosfet enabled
+```
+
+
+## Thank you to
+* Jehu Garcia and the DIY community he's fostered.
+
+## Special thanks to these other DIYers
+* Daniel Esparza
+* Jonathan Sperb
+* Justin Sutcliff [GitHub](#https://github.com/DookieSheets/OKAI-Battery-Lib)
