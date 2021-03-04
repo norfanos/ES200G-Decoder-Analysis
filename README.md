@@ -149,15 +149,6 @@ Comand received:
 (33) -
 (34) -
 (35) - Maxim Checksum8
-About the status byte (3):
-b7 -
-b6 -
-b5 - charging (bulk)
-b4 - cell undervoltage
-b3 - charger ok (?)
-b2 - charger detected (?)
-b1 - discharge mosfet enabled
-b0 - charger mosfet enabled
 ```
 
 
