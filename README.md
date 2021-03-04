@@ -158,4 +158,4 @@ Comand received:
 ## Special thanks to these other DIYers
 * Daniel Esparza
 * Jonathan Sperb
-* Justin Sutcliff [GitHub](#https://github.com/DookieSheets/OKAI-Battery-Lib)
+* Justin Sutcliff [https://github.com/DookieSheets/OKAI-Battery-Lib]
