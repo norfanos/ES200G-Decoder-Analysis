@@ -151,6 +151,21 @@ Comand received:
 (35) - Maxim Checksum8
 ```
 
+## For new data logs, see XLSX file for legend.
+[XLSX File](https://github.com/norfanos/ES200G-Decoder-Analysis/Data/ES200G%20Battery%20RX%20to%20unlock%20code.xlsx)
+```
+DG      Battery self-cycling: No Charger
+EG      Load connected - OFF; No Charger
+FG      Load connected - ON; No Charger
+DH      Battery self-cycling; Charger plugged in but OFF
+EH      Load connected - OFF; Charger plugged in but OFF
+FH      Load connected - ON; Charger plugged in but OFF
+DI      Battery self-cycling; Charger plugged in but ON
+EI      Load connected - OFF; Charger plugged in but ON
+FI      Load connected - ON; Charger plugged in but ON
+CHPLS   Pulse Charger Off/On — No Load
+
+```
 
 ## Thank you to
 * Jehu Garcia and the DIY community he's fostered.
@@ -158,4 +173,4 @@ Comand received:
 ## Special thanks to these other DIYers
 * Daniel Esparza
 * Jonathan Sperb
-* Justin Sutcliff [https://github.com/DookieSheets/OKAI-Battery-Lib]
+* Justin Sutcliff - GitHub Project [OKAI-Battery-Lib](https://github.com/DookieSheets/OKAI-Battery-Lib)

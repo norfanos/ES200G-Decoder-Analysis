@@ -8,17 +8,31 @@ class data:
     # def __init__(self):
     #     self.a_random_arg = a_random_arg
     #     display(self)
+    #
+    @staticmethod
+    def signed(n):
+        if n >= 0x8000:
+            n -= 0x10000
+        return n
+
+    # @classmethod
+
+
+    # @ Native
+    # = Standard
+    # < Little Endian
+    # > Big Endian
+    # ! Network
+    @staticmethod
+    def getInt(val, typeChar='<'):
+        return data.getUnsignedInt(val, typeChar=typeChar)
+
 
     @staticmethod
-    def getInt(val, typeChar='>'):
+    def getUnsignedInt(val, typeChar='>'):
         encodedData = val.encode()
         encodedDataLen = len(encodedData)
 
-        # @ Native
-        # = Standard
-        # < Little Endian
-        # > Big Endian
-        # ! Network
         s = struct.Struct(typeChar + ' ' + str(encodedDataLen) + 's')
         packedData = s.pack(encodedData)
 
@@ -35,6 +49,11 @@ class data:
     @staticmethod
     def getIntLE(val):
         return data.getInt(val=val, typeChar='<')
+
+
+    @staticmethod
+    def getUnsighedIntLE(val):
+        return data.getUnsignedInt(val=val, typeChar='<')
 
 
     @staticmethod
